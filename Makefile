@@ -30,6 +30,7 @@ $(NAME): $(OBJS)
 
 clean:
 	make -C $(PATH_MLX) clean
+	make -C $(PATH_LIBFT) clean
 	${RM} ${OBJS} 
 
 fclean:         clean

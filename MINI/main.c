@@ -22,10 +22,10 @@ void    my_mlx_pixel_put(data_t *pix, int x, int y, int color)
     *(unsigned int*)dst = color;
 }
 
-void	draw_line(data_t *pix, int x, int y)
+/*void	draw_line(data_t *pix, int x, int y)
 {
 
-}
+}*/
 
 int main(void)
 {
