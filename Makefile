@@ -8,6 +8,8 @@ SRCS =     main.c
 OBJS         =     ${SRCS:.c=.o}
 
 PATH_MLX    =    ./mlx
+GNL			=	./getnextline/get_next_line.c
+PATH_LIBFT		= ./libft
 CC             =     gcc
 CFLAGS        =     -Wall -Wextra -Werror -g
 LIB         =   mlx/libmlx.a
@@ -22,6 +24,8 @@ all:             ${NAME}
 
 $(NAME): $(OBJS)
 	make -C $(PATH_MLX)
+	make -C $(PATH_LIBFT)
+	${CC} $(CFLAGS) $(GNL)
 	${CC} $(CFLAGS) $(OBJS) $(FLAGS) $(LIB) -o $(NAME)
 
 clean:
