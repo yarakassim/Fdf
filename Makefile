@@ -25,7 +25,7 @@ all:             ${NAME}
 $(NAME): $(OBJS)
 	make -C $(PATH_MLX)
 	make -C $(PATH_LIBFT)
-	${CC} $(CFLAGS) $(GNL)
+	${CC} $(CFLAGS) $(GNL) -D BUFFER_SIZE=0
 	${CC} $(CFLAGS) $(OBJS) $(FLAGS) $(LIB) -o $(NAME)
 
 clean:

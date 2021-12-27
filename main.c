@@ -33,6 +33,7 @@ int main(void)
     int x = 55;
     int y = 55;
     int i = 54;
+    unsigned long hexa_color = 0x00FF0000;
 
     data.mlx_ptr = mlx_init();
     data.mlx_win = mlx_new_window(data.mlx_ptr, 1920, 1080, "fdf");
@@ -40,18 +41,20 @@ int main(void)
     data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length, &data.endian);
     while (++i < 500)
     {
-	    my_mlx_pixel_put(&data, 55, y, 0x00FF0000);
-	    my_mlx_pixel_put(&data, x, 55, 0x00FF0000);
+	    my_mlx_pixel_put(&data, 55, y, hexa_color);
+	    my_mlx_pixel_put(&data, x, 55, hexa_color);
 	    x++;
 	    y++;
+        hexa_color++;
     }
     i = 54;
     y = 55;
     while (++i < 500)
     { 
-	    my_mlx_pixel_put(&data, x, y, 0x00FF0000);
+	    my_mlx_pixel_put(&data, x, y, hexa_color);
 	    x--;
 	    y++;
+        hexa_color++;
     } 
 
     mlx_put_image_to_window(data.mlx_ptr, data.mlx_win, data.img, 0, 0);
