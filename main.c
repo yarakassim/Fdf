@@ -22,40 +22,42 @@ void    my_mlx_pixel_put(data_t *pix, int x, int y, int color)
     *(unsigned int*)dst = color;
 }
 
-/*void	draw_line(data_t *pix, int x, int y)
+void	trace_segment(data_t *pix, int x1, int y1, int x2, int y2, int color)
 {
+    int x, y, dx, dy, p;
 
-}*/
+    dy = y2 - y1;
+    dx = x2 - x1;
+    y = y1;
+    x = x1;
+    p = 2 * dy - dx;
+    while (x < x2)
+    {
+        if (p >= 0) 
+        {
+            my_mlx_pixel_put(pix, x, y, color);
+            y = y + 1;
+            p = p + 2 * dy - 2 * dx;
+        }
+        else
+        {
+            my_mlx_pixel_put(pix, x, y, color);
+            p = p + 2 * dy;
+        }
+        x++;
+    }
+}
 
 int main(void)
 {
     data_t  data;
-    int x = 55;
-    int y = 55;
-    int i = 54;
-    unsigned long hexa_color = 0x00FF0000;
 
     data.mlx_ptr = mlx_init();
     data.mlx_win = mlx_new_window(data.mlx_ptr, 1920, 1080, "fdf");
     data.img = mlx_new_image(data.mlx_ptr, 1920, 1080);
     data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length, &data.endian);
-    while (++i < 500)
-    {
-	    my_mlx_pixel_put(&data, 55, y, hexa_color);
-	    my_mlx_pixel_put(&data, x, 55, hexa_color);
-	    x++;
-	    y++;
-        hexa_color++;
-    }
-    i = 54;
-    y = 55;
-    while (++i < 500)
-    { 
-	    my_mlx_pixel_put(&data, x, y, hexa_color);
-	    x--;
-	    y++;
-        hexa_color++;
-    } 
+    
+    trace_segment(&data, 200, 100, 700, 1000, 0x00FF0000);
 
     mlx_put_image_to_window(data.mlx_ptr, data.mlx_win, data.img, 0, 0);
     mlx_loop(data.mlx_ptr);
