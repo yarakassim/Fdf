@@ -6,15 +6,15 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 13:34:30 by yarakassim        #+#    #+#             */
-/*   Updated: 2021/12/27 14:22:58 by ykassim-         ###   ########.fr       */
+/*   Updated: 2021/12/30 18:45:24 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "mlx/mlx.h"
-# include "getnextline/getnextline.h"
-# include "libft/libft.h"
+# include "mlx.h"
+# include "get_next_line.h"
+# include "libft.h"
 
 #endif

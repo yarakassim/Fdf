@@ -1,88 +1,64 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: eazenag <eazenag@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/03 15:26:08 by eli               #+#    #+#             */
-/*   Updated: 2021/08/02 15:12:54 by eazenag          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 #include "../includes/fdf.h"
 
-int	ft_free(t_mlx *map)
+typedef struct    data_s
 {
-	int	i;
+    void	*mlx_ptr;
+    void	*mlx_win;
+    void    *img;
+    char    *addr;
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
+}                 data_t;
 
-	i = 0;
-	if (map->image)
-		mlx_destroy_image(map->ptr, map->image);
-	if (map->window)
-	{
-		mlx_clear_window(map->ptr, map->window);
-		mlx_destroy_window(map->ptr, map->window);
-		mlx_destroy_display(map->ptr);
-		free(map->ptr);
-	}
-	while (i < map->nbr_lines)
-	{
-		free(map->tab[i]);
-		i++;
-	}
-	free(map->tab);
-	return (-1);
+void    my_mlx_pixel_put(data_t *pix, int x, int y, int color)
+{
+    char    *dst;
+
+    dst = pix->addr + (y * pix->line_length + x * (pix->bits_per_pixel / 8));
+    *(unsigned int*)dst = color;
 }
 
-int	ft_quit(int keycode, t_mlx *map)
+void	draw_line(data_t *pix, int x1, int y1, int x2, int y2, int color)
 {
-	if (keycode != ESC_KEY)
-		return (0);
-	ft_free(map);
-	exit(1);
+    int x, y, dx, dy, p;
+
+    dy = y2 - y1;
+    dx = x2 - x1;
+    y = y1;
+    x = x1;
+    p = 2 * dy - dx;
+    while (x < x2)
+    {
+        if (p >= 0) 
+        {
+            my_mlx_pixel_put(pix, x, y, color);
+            y += 1;
+            p = p + 2 * dy - 2 * dx;
+        }
+        else
+        {
+            my_mlx_pixel_put(pix, x, y, color);
+            p = p + 2 * dy;
+        }
+        x += 1;
+    }
 }
 
-void	ft_draw_map(t_mlx *map)
+int main(void)
 {
-	int		lines;
-	int		i;
+    data_t  data;
 
-	i = 0;
-	lines = map->nbr_lines;
-	while (--lines)
-	{
-		map->Xa = map->beginX;
-		map->Ya = map->beginY;
-		ft_draw(map, &(map->tab[i]), map->tab[i][1], 0);
-		map->beginX += map->unitX;
-		map->beginY += map->unitY;
-		map->beginY += (map->unitZ * map->tab[i][0]);
-		map->beginY += (map->unitZ * -map->tab[i + 1][0]);
-		i++;
-		mlx_put_image_to_window(map->ptr, map->window, map->image, 0, 0);
-	}
-}
+    data.mlx_ptr = mlx_init();
+    data.mlx_win = mlx_new_window(data.mlx_ptr, 1920, 1080, "fdf");
+    data.img = mlx_new_image(data.mlx_ptr, 1920, 1080);
+    data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length, &data.endian);
+    
+    draw_line(&data, 1000, 394, 1250, 400, 0x00FF0000);
 
-int	main(int ac, char **av)
-{
-	int		**tab;
-	t_mlx	map;
-
-	if (ac != 2 || ft_count_line(av[1], &map) == -1)
-	{
-		write(1, "Invalid map\n", 12);
-		return (-1);
-	}
-	tab = ft_map(av[1], map);
-	map.tab = tab;
-	if (tab == NULL)
-		return (-1);
-	if (ft_config_units(&map) == -1)
-		return (ft_free(&map));
-	ft_draw_map(&map);
-	mlx_key_hook(map.window, ft_quit, &map);
-	mlx_loop(map.ptr);
-	ft_free(&map);
-	return (0);
+    mlx_put_image_to_window(data.mlx_ptr, data.mlx_win, data.img, 0, 0);
+    mlx_loop(data.mlx_ptr);
 }
