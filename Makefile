@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+         #
+#    By: yarakassim <yarakassim@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/27 13:36:14 by ykassim-          #+#    #+#              #
-#    Updated: 2021/12/29 17:32:45 by ykassim-         ###   ########.fr        #
+#    Updated: 2022/01/03 23:52:51 by yarakassim       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME = fdf
 
 #source files and object files
-FILES 	=	main.c
+FILES 	=	main.c draw.c
 SRCS	=	$(addprefix srcs/, $(FILES))
 OBJS	=	$(SRCS:.c=.o)
 
@@ -53,10 +53,3 @@ fclean:	clean
 	make -C $(PATH_LIBFT) fclean
 
 re:	fclean all
-
-
-
-
-
-
-
