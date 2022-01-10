@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yarakassim <yarakassim@student.42.fr>      +#+  +:+       +#+        */
+/*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 13:34:30 by yarakassim        #+#    #+#             */
-/*   Updated: 2022/01/03 23:45:57 by yarakassim       ###   ########.fr       */
+/*   Updated: 2022/01/10 15:12:20 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "mlx.h"
 # include "get_next_line.h"
 # include "libft.h"
+# include <stdio.h>
 
 typedef struct      s_data
 {
@@ -46,5 +47,8 @@ void    bresenham2(t_data *pix, t_vector *v);
 void    bresenham3(t_data *pix, t_vector *v);
 void    bresenham4(t_data *pix, t_vector *v);
 void    draw_line(t_data *pix, t_vector *v);
+void    *ft_memset(void *b, int c, size_t len);
+int     key_hook(int keycode, t_data *data);
+void    init(t_data *data);
 
 #endif

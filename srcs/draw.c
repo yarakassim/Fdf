@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yarakassim <yarakassim@student.42.fr>      +#+  +:+       +#+        */
+/*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 18:39:56 by ykassim-          #+#    #+#             */
-/*   Updated: 2022/01/03 23:45:58 by yarakassim       ###   ########.fr       */
+/*   Updated: 2022/01/10 11:58:11 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void    bresenham1(t_data *pix, t_vector *v)
         if (v->e <= 0)
         {
             v->y1++;
-            v->e += v->dy;
+            v->e += v->dx;
         }
         v->x1++;
     }
@@ -92,7 +92,7 @@ void    bresenham4(t_data *pix, t_vector *v)
             v->x1++;
             v->e += v->dy;
         }
-        v->y1++;
+        v->y1--;
     }
 }
 
@@ -105,6 +105,9 @@ void	draw_line(t_data *pix, t_vector *v)
         tmp = v->x1;
         v->x1 = v->x2;
         v->x2 = tmp;
+        tmp = v->y1;
+        v->y1 = v->y2;
+        v->y2 = tmp;
     }
     v->dx = v->x2 - v->x1;
     if (v->y1 < v->y2)
