@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/11 11:46:10 by ykassim-          #+#    #+#             */
-/*   Updated: 2022/01/11 13:34:45 by ykassim-         ###   ########.fr       */
+/*   Created: 2021/05/27 10:34:11 by ykassim-          #+#    #+#             */
+/*   Updated: 2022/01/11 13:36:45 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
-#include <stdio.h>
+#include "../includes/libft.h"
 
-int check_format(char *arg)
+size_t	ft_strlen	(const char *s)
 {
-    int     fd;
-    int     len;
-    char    *line;
+	int	i;
 
-    fd = open(arg, O_RDONLY);
-    line = "hello world";
-    while (line)
-    {
-        line = get_next_line(fd);
-        if (line && len)
-        {
-            printf("line : %s", line);
-            len = ft_strlen(line);
-        }
-    }
-    return (1);
+	i = 0;
+	while (s[i])
+	{
+		i++;
+	}
+	return ((size_t)i);
 }

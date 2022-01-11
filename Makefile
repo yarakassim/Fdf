@@ -6,7 +6,7 @@
 #    By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/27 13:36:14 by ykassim-          #+#    #+#              #
-#    Updated: 2022/01/10 14:58:09 by ykassim-         ###   ########.fr        #
+#    Updated: 2022/01/11 13:35:48 by ykassim-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME = fdf
 
 #source files and object files
-FILES 	=	main.c draw.c init.c
+FILES 	=	main.c draw.c init.c get_next_line.c get_next_line_utils.c map.c ft_strlen.c
 SRCS	=	$(addprefix srcs/, $(FILES))
 OBJS	=	$(SRCS:.c=.o)
 

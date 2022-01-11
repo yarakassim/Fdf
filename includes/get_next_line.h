@@ -6,7 +6,7 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 09:56:07 by ykassim-          #+#    #+#             */
-/*   Updated: 2021/12/30 19:40:29 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/01/11 10:36:12 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+
+#define BUFFER_SIZE 400
 
 char	*get_next_line(int fd);
 int		len_index(char *str, char c);

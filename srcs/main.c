@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "../includes/fdf.h"
-#include "../includes/get_next_line.h"
 
 void	*ft_memset	(void *b, int c, size_t len)
 {
@@ -32,17 +31,19 @@ int main(int ac, char **av)
 
     if (ac != 2)
     {
-        printf("sorry, wrong number of arguments\n");
+        write(0,"sorry, wrong number of arguments\n", 33);
         return(0);
     }
-    int fd;
-    fd = open(av[1], O_RDONLY);
-    get_next_line(fd);
+    if (!check_format(av[1]))
+    {
+        write(0, "sorry, map is not properly formatted\n", 37);
+        return (0);
+    }
     init(&data);
     ft_memset(&v, 0, sizeof(t_vector));
-    v.x1 = 900;
-    v.y1 = 900;
-    v.x2 = 100;
+    v.x1 = 100;
+    v.y1 = 300;
+    v.x2 = 900;
     v.y2 = 300;
     v.color = 0x00FF0000;
     draw_line(&data, &v);
