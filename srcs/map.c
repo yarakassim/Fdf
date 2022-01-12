@@ -6,13 +6,23 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 11:46:10 by ykassim-          #+#    #+#             */
-/*   Updated: 2022/01/11 15:52:27 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/01/12 09:24:45 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 #include <stdio.h>
 
+int check_space(char *str)
+{
+    int i;
+
+    i = -1;
+    while (str[++i])
+    {
+        if
+    }
+}
 int check_len(char *str, int len)
 {
     int i;
