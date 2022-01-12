@@ -6,7 +6,7 @@
 #    By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/27 13:36:14 by ykassim-          #+#    #+#              #
-#    Updated: 2022/01/11 15:52:32 by ykassim-         ###   ########.fr        #
+#    Updated: 2022/01/12 16:45:19 by ykassim-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ $(PATH_OBJS)%.o:$(PATH_SRCS)%.c
 $(NAME): $(OBJS)
 	make -C $(PATH_MLX) 
 	make -C $(PATH_LIBFT)
-	${CC} $(CFLAGS) $(OBJS) -o $(NAME) $(FLAGS) 
+	${CC} $(CFLAGS) $(OBJS) -o $(NAME) $(FLAGS) libft/libft.a
 
 clean:
 	${RM} ${OBJS}

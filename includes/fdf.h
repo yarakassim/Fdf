@@ -6,7 +6,7 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 13:34:30 by yarakassim        #+#    #+#             */
-/*   Updated: 2022/01/11 15:52:34 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/01/12 16:45:28 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "mlx.h"
 # include "get_next_line.h"
-# include "libft.h"
+# include "../libft/libft.h"
 # include <unistd.h>
 
 typedef struct      s_data
@@ -27,6 +27,8 @@ typedef struct      s_data
     int     bits_per_pixel;
     int     line_length;
     int     endian;
+    int     col;
+    int     row;
 }                 t_data;
 
 typedef struct      s_vector

@@ -20,7 +20,10 @@ void	*ft_memset	(void *b, int c, size_t len)
 int key_hook(int keycode, t_data *data)
 {
     if (keycode == 65307)
+    {
         mlx_destroy_window(data->mlx_ptr, data->mlx_win);
+        exit(0);
+    }
     return (0);
 }
 
