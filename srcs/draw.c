@@ -6,13 +6,13 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 18:39:56 by ykassim-          #+#    #+#             */
-/*   Updated: 2022/01/12 16:45:24 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/01/13 14:25:14 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void    my_mlx_pixel_put(t_data *pix, int x, int y, int color)
+void    my_mlx_pixel_put(t_craft *pix, int x, int y, int color)
 {
     char    *dst;
 
@@ -20,7 +20,7 @@ void    my_mlx_pixel_put(t_data *pix, int x, int y, int color)
     *(unsigned int*)dst = color;
 }
 
-void    bresenham1(t_data *pix, t_vector *v)
+void    bresenham1(t_craft *pix, t_vector *v)
 {
     v->dx = v->x2 - v->x1;
     v->dy = v->y2 - v->y1;
@@ -39,7 +39,7 @@ void    bresenham1(t_data *pix, t_vector *v)
     }
 }
 
-void    bresenham2(t_data *pix, t_vector *v)
+void    bresenham2(t_craft *pix, t_vector *v)
 {
     v->dx = v->x2 - v->x1;
     v->dy = v->y2 - v->y1;
@@ -58,7 +58,7 @@ void    bresenham2(t_data *pix, t_vector *v)
     }
 }
 
-void    bresenham3(t_data *pix, t_vector *v)
+void    bresenham3(t_craft *pix, t_vector *v)
 {
     v->dx = v->x2 - v->x1;
     v->dy = v->y1 - v->y2;
@@ -77,7 +77,7 @@ void    bresenham3(t_data *pix, t_vector *v)
     }
 }
 
-void    bresenham4(t_data *pix, t_vector *v)
+void    bresenham4(t_craft *pix, t_vector *v)
 {
     v->dx = v->x2 - v->x1;
     v->dy = v->y1 - v->y2;
@@ -96,7 +96,7 @@ void    bresenham4(t_data *pix, t_vector *v)
     }
 }
 
-void	draw_line(t_data *pix, t_vector *v)
+void	draw_line(t_craft *pix, t_vector *v)
 {
     int tmp;
 

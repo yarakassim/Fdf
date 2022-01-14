@@ -6,30 +6,18 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 13:34:30 by yarakassim        #+#    #+#             */
-/*   Updated: 2022/01/12 16:45:28 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/01/14 16:50:53 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include "mlx.h"
-# include "get_next_line.h"
+# include "../mlx/mlx.h"
+# include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
 # include <unistd.h>
-
-typedef struct      s_data
-{
-    void	*mlx_ptr;
-    void	*mlx_win;
-    void    *img;
-    char    *addr;
-    int     bits_per_pixel;
-    int     line_length;
-    int     endian;
-    int     col;
-    int     row;
-}                 t_data;
+# include <stdlib.h>
 
 typedef struct      s_vector
 {
@@ -43,16 +31,43 @@ typedef struct      s_vector
     int color;
 }               t_vector;
 
+typedef struct      s_map
+{
+    int     col;
+    int     row;
+    char    **tab;
+	int		**array;
+	t_vector v;
+}				t_map;
 
-void    my_mlx_pixel_put(t_data *pix, int x, int y, int color);
-void    bresenham1(t_data *pix, t_vector *v);
-void    bresenham2(t_data *pix, t_vector *v);
-void    bresenham3(t_data *pix, t_vector *v);
-void    bresenham4(t_data *pix, t_vector *v);
-void    draw_line(t_data *pix, t_vector *v);
-void    *ft_memset(void *b, int c, size_t len);
-int     key_hook(int keycode, t_data *data);
-void    init(t_data *data);
-int     check_format(char *arg);
+typedef struct      s_craft
+{
+    void	*mlx_ptr;
+    void	*mlx_win;
+    void    *img;
+    char    *addr;
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
+}           	t_craft;
+
+void    my_mlx_pixel_put(t_craft *pix, int x, int y, int color);
+void    bresenham1(t_craft *pix, t_vector *v);
+void    bresenham2(t_craft *pix, t_vector *v);
+void    bresenham3(t_craft *pix, t_vector *v);
+void    bresenham4(t_craft *pix, t_vector *v);
+void    draw_line(t_craft *pix, t_vector *v);
+void 	abort_mission(int signal);
+void    init(t_map *map);
+void	minit(t_craft *craft);
+void    liberation(char *ptr);
+void	wireframe_in_3_2_1(char	*arg, t_map *map);
+int     key_hook(int keycode, t_craft *craft);
+int     parse_map(char *arg, t_map *map);
+int     check_col(t_map *map);
+int     col_count(char **tab);
+int		super_liberation(t_map *map, int fd);
+void	release(t_craft *craft);
+void	init_array(char *arg, t_map *map);
 
 #endif

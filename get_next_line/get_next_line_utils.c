@@ -6,11 +6,11 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 15:28:44 by ykassim-          #+#    #+#             */
-/*   Updated: 2022/01/11 10:30:38 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/01/13 13:03:57 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
+#include "get_next_line.h"
 
 int	len_index(char *str, char c)
 {

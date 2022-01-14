@@ -3,25 +3,12 @@
 #include <string.h>
 #include "../includes/fdf.h"
 
-void	*ft_memset	(void *b, int c, size_t len)
-{
-	unsigned char	*rep;
-
-	rep = (unsigned char *)b;
-	while (len)
-	{
-		*rep = (unsigned char)c;
-		rep++;
-		len--;
-	}
-	return (b);
-}
-
-int key_hook(int keycode, t_data *data)
+int key_hook(int keycode, t_craft *craft)
 {
     if (keycode == 65307)
     {
-        mlx_destroy_window(data->mlx_ptr, data->mlx_win);
+		if (craft->mlx_ptr)
+			release(craft);
         exit(0);
     }
     return (0);
@@ -29,28 +16,24 @@ int key_hook(int keycode, t_data *data)
 
 int main(int ac, char **av)
 {
-    t_data      data;
+    t_craft		craft;
+	t_map		map;
     t_vector    v;
 
     if (ac != 2)
-    {
-        write(0,"sorry, wrong number of arguments\n", 33);
-        return(0);
-    }
-    if (!check_format(av[1]))
-    {
-        write(0, "sorry, map is not properly formatted\n", 37);
-        return (0);
-    }
-    init(&data);
-    ft_memset(&v, 0, sizeof(t_vector));
+		abort_mission(1);
+	init(&map);
+    if (!parse_map(av[1], &map))
+		abort_mission(2);
+	minit(&craft);
+	wireframe_in_3_2_1(av[1], &map);
     v.x1 = 100;
     v.y1 = 300;
     v.x2 = 900;
     v.y2 = 300;
     v.color = 0x00FF0000;
-    draw_line(&data, &v);
-    mlx_key_hook(data.mlx_win, key_hook, &data);
-    mlx_put_image_to_window(data.mlx_ptr, data.mlx_win, data.img, 0, 0);
-    mlx_loop(data.mlx_ptr);
+    draw_line(&craft, &v);
+    mlx_key_hook(craft.mlx_win, key_hook, &craft);
+    mlx_put_image_to_window(craft.mlx_ptr, craft.mlx_win, craft.img, 0, 0);
+    mlx_loop(craft.mlx_ptr);
 }
