@@ -6,7 +6,7 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 14:53:45 by ykassim-          #+#    #+#             */
-/*   Updated: 2022/01/17 10:49:41 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/01/17 13:38:39 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 void init(t_map *map)
 {
 	ft_memset(map, 0, sizeof(map));
-	map->x_column = 0;
-	map->z_alt_max = 0;
-	map->z_alt_min = 0;
 	//ft_memset(&craft->map, 0, sizeof(craft->map));
 	//ft_memset(&craft->map.v, 0, sizeof(craft->map.v));
 	if (!map)

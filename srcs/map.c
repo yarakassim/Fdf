@@ -6,7 +6,7 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 11:46:10 by ykassim-          #+#    #+#             */
-/*   Updated: 2022/01/17 10:56:38 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/01/17 14:53:33 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,16 @@ int parse_map(char *arg, t_map *map)
     fd = open(arg, O_RDONLY);
 	if (fd < 0)
 		abort_mission(4);
-    map->y_row = 0;
+    map->x_column = 0;
+	map->y_row = 0;
+	map->z_alt_max = 0;
+	map->z_alt_min = 0;
 	line = NULL;
 	line = get_next_line(fd);
 	while (line)
     {
 		if (!check_values(&line, map))
-		{
 			abort_mission(2);
-		}
 		map->y_row++;
 		line = get_next_line(fd);
 	}
@@ -44,9 +45,9 @@ int     check_values(char **line, t_map *map)
 	int		count;
 
 	col = ft_split(*line, ' ');
+	liberation(*line);
 	if (!col)
 		return (0);
-	liberation(*line);
 	count = -1;
 	while (col[++count])
 	{

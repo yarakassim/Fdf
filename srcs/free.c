@@ -6,12 +6,12 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/14 13:05:43 by ykassim-          #+#    #+#             */
-/*   Updated: 2022/01/17 10:02:05 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/01/17 13:32:56 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
+# include <stdio.h>
 void    liberation(char *ptr)
 {
     if (ptr)

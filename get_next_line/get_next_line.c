@@ -6,7 +6,7 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 11:03:30 by ykassim-          #+#    #+#             */
-/*   Updated: 2022/01/13 13:03:51 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/01/17 14:35:20 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ char	*get_next_line(int fd)
 	while (len_index(juno, '\n') == -1)
 	{
 		ret = read(fd, buffer, BUFFER_SIZE);
-		buffer[ret] = '\0';
 		if (ret > 0)
 		{
+			buffer[ret] = '\0';
 			if (!juno)
 				juno = ft_dup(buffer, len_index(buffer, '\0'));
 			else
