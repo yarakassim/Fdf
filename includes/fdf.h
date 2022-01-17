@@ -6,7 +6,7 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 13:34:30 by yarakassim        #+#    #+#             */
-/*   Updated: 2022/01/14 16:50:53 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/01/17 10:50:25 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ typedef struct      s_vector
 
 typedef struct      s_map
 {
-    int     col;
-    int     row;
-    char    **tab;
-	int		**array;
+    int     x_column;
+    int     y_row;
+	int		z_alt_max;
+	int		z_alt_min;
 	t_vector v;
 }				t_map;
 
@@ -61,13 +61,11 @@ void 	abort_mission(int signal);
 void    init(t_map *map);
 void	minit(t_craft *craft);
 void    liberation(char *ptr);
-void	wireframe_in_3_2_1(char	*arg, t_map *map);
+//void	wireframe_in_3_2_1(char	*arg, t_map *map);
 int     key_hook(int keycode, t_craft *craft);
 int     parse_map(char *arg, t_map *map);
-int     check_col(t_map *map);
-int     col_count(char **tab);
-int		super_liberation(t_map *map, int fd);
+int     check_values(char **line, t_map *map);
+int     column_count(char **col, int n);
 void	release(t_craft *craft);
-void	init_array(char *arg, t_map *map);
 
 #endif

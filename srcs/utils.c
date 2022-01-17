@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/14 13:05:43 by ykassim-          #+#    #+#             */
-/*   Updated: 2022/01/17 10:02:05 by ykassim-         ###   ########.fr       */
+/*   Created: 2022/01/17 10:15:41 by ykassim-          #+#    #+#             */
+/*   Updated: 2022/01/17 10:16:00 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void    liberation(char *ptr)
+int column_count(char **col, int n)
 {
-    if (ptr)
-        free(ptr);
-    ptr = NULL;
-}
+    int len;
 
-void	release(t_craft *craft)
-{
-	if (craft->img)
-        mlx_destroy_image(craft->mlx_ptr, craft->img);
-    if(craft->mlx_win)
-		mlx_destroy_window(craft->mlx_ptr, craft->mlx_win);
-    mlx_destroy_display(craft->mlx_ptr);
-    free(craft->mlx_ptr);
+    if (!col)
+        return (0);
+    len = -1;
+	while (col[n][++len]);
+    return (len);
 }

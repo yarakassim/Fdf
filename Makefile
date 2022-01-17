@@ -6,7 +6,7 @@
 #    By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/27 13:36:14 by ykassim-          #+#    #+#              #
-#    Updated: 2022/01/14 13:08:09 by ykassim-         ###   ########.fr        #
+#    Updated: 2022/01/17 10:16:30 by ykassim-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ FILES 	=	main.c \
 			init.c \
 			map.c \
 			error.c \
-			free.c
+			free.c \
+			utils.c
 SRCS	=	$(addprefix srcs/, $(FILES)) get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 OBJS	=	$(SRCS:.c=.o)
 

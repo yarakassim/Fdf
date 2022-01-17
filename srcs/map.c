@@ -6,7 +6,7 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 11:46:10 by ykassim-          #+#    #+#             */
-/*   Updated: 2022/01/14 16:52:25 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/01/17 10:56:38 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,53 +21,48 @@ int parse_map(char *arg, t_map *map)
     fd = open(arg, O_RDONLY);
 	if (fd < 0)
 		abort_mission(4);
-    map->row = 0;
-	line = ft_strdup("");
+    map->y_row = 0;
+	line = NULL;
+	line = get_next_line(fd);
 	while (line)
     {
-		liberation(line);
-        line = ft_strdup(get_next_line(fd));
-        if (line)
-        {
-            map->tab = ft_split(line, ' ');
-            if (!map->tab || !check_col(map))
-            {
-				printf("col : %d  >>  col : %d  >>  ", map->col, col_count(map->tab));
-				liberation(line);
-				super_liberation(map, fd);
-				return (0);	
-			}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-            map->tab = freedom(map->tab);
-			map->row++;
-        }
-    }
+		if (!check_values(&line, map))
+		{
+			abort_mission(2);
+		}
+		map->y_row++;
+		line = get_next_line(fd);
+	}
     liberation(line);
     close(fd);
     return (1);
 }
 
-int     check_col(t_map *map)
+int     check_values(char **line, t_map *map)
 {
-    if (map->row == 0)
-        map->col = col_count(map->tab);
-    else
-        if (map->col != col_count(map->tab))
-            return (0);
-    return (1);
+	char	**col;
+	int		count;
+
+	col = ft_split(*line, ' ');
+	if (!col)
+		return (0);
+	liberation(*line);
+	count = -1;
+	while (col[++count])
+	{
+		if (ft_atoi(col[count]) > map->z_alt_max)
+			map->z_alt_max = ft_atoi(col[count]);
+		if (ft_atoi(col[count]) < map->z_alt_min)
+			map->z_alt_min = ft_atoi(col[count]);
+	}
+	freedom(col);
+	if (map->x_column == 0)
+		map->x_column = count;
+	else if (count != map->x_column)
+		return (0);
+	return (1);
 }
 
-int col_count(char **tab)
+/*void	wireframe_in_3_2_1(char *arg, t_map *map)
 {
-    int len;
-
-    if (!tab)
-        return (0);
-    len = -1;
-	while (tab[++len]);
-    return (len);
-}
-
-void	wireframe_in_3_2_1(char *arg, t_map *map)
-{
-    init_array(arg, map);
-}
+}*/
