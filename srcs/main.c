@@ -25,8 +25,8 @@ int main(int ac, char **av)
 	init(&map);
     if (!parse_map(av[1], &map))
 		abort_mission(2);
+	wireframe_in_3_2_1(av[1], &map);
 	minit(&craft);
-	//wireframe_in_3_2_1(av[1], &map);
     v.x1 = 100;
     v.y1 = 300;
     v.x2 = 900;

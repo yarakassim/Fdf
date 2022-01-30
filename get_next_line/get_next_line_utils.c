@@ -6,7 +6,7 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/12 15:28:44 by ykassim-          #+#    #+#             */
-/*   Updated: 2022/01/17 14:27:03 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/01/29 21:45:38 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_dup(char *str, int len)
 		return (str);
 	if (len > len_index(str, '\0'))
 		len = len_index(str, '\0');
-	dup = malloc(sizeof(char) * len + 1);
+	dup = (char *)malloc(sizeof(char) * len + 1);
 	if (!dup)
 		return (NULL);
 	i = -1;
@@ -63,7 +63,7 @@ char	*ft_join(char *s1, char *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	len = len_index(s1, '\0') + len_index(s2, '\0');
-	str = malloc(sizeof(char) * len + 1);
+	str = (char *)malloc(sizeof(char) * len + 1);
 	if (!str)
 		return (NULL);
 	i = -1;

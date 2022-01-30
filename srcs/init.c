@@ -6,7 +6,7 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 14:53:45 by ykassim-          #+#    #+#             */
-/*   Updated: 2022/01/17 13:38:39 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/01/30 01:25:53 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,23 @@ void minit(t_craft *craft)
     craft->img = mlx_new_image(craft->mlx_ptr, 1800, 1000);
     craft->addr = mlx_get_data_addr(craft->img, &craft->bits_per_pixel, &craft->line_length, &craft->endian);
 }
-#include <stdio.h>
+
+void	init_array(int **array, char *arg, t_map *map)
+{
+	char	*line;
+	int		fd;
+
+	fd = open(arg, O_RDONLY);
+	if (fd < 0)
+		abort_mission(3);
+	line = NULL;
+	line = get_next_line(fd);
+	while (line)
+	{
+		if (!parse_again(array, &line, map))
+			abort_mission(3);
+		line = get_next_line(fd);
+	}
+	free(line);
+	close(fd);
+}
