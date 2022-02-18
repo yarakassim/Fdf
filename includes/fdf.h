@@ -6,7 +6,7 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 13:34:30 by yarakassim        #+#    #+#             */
-/*   Updated: 2022/01/30 01:25:42 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/02/18 16:05:42 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ int     check_values(char **line, t_map *map);
 int     column_count(char **col, int n);
 void	release(t_craft *craft);
 void	init_array(int **array, char *arg, t_map *map);
-int		parse_again(int **array, char **line, t_map *map);
+int		parse_again(int **array, char **line, t_map *map, int i);
 
 #endif

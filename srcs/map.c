@@ -6,7 +6,7 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 11:46:10 by ykassim-          #+#    #+#             */
-/*   Updated: 2022/01/30 01:27:58 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/02/18 16:04:21 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,9 @@ void	wireframe_in_3_2_1(char *arg, t_map *map)
 	freedom((void **)array);
 }
 
-int	parse_again(int **array, char **line, t_map *map)
+int	parse_again(int **array, char **line, t_map *map, int i)
 {
 	char		**col;
-	static	int i = 0;
 	int			j;
 	
 	col = ft_split(*line, ' ');
@@ -112,7 +111,7 @@ int	parse_again(int **array, char **line, t_map *map)
 		return (0);
 	j = -1;
 	while(++j < map->x_column)
-		*array[i][j] = ft_atoi(col[j]); 
+		array[i][j] = ft_atoi(col[j]); 
 	freedom((void **)col);
 	col = NULL;
 	i++;

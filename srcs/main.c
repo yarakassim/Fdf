@@ -28,7 +28,7 @@ int main(int ac, char **av)
 	wireframe_in_3_2_1(av[1], &map);
 	minit(&craft);
     v.x1 = 100;
-    v.y1 = 300;
+    v.y1 = 900;
     v.x2 = 900;
     v.y2 = 300;
     v.color = 0x00FF0000;
