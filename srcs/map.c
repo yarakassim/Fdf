@@ -6,7 +6,7 @@
 /*   By: ykassim- <ykassim-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 11:46:10 by ykassim-          #+#    #+#             */
-/*   Updated: 2022/02/18 16:04:21 by ykassim-         ###   ########.fr       */
+/*   Updated: 2022/02/19 11:13:30 by ykassim-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,20 +84,29 @@ void	wireframe_in_3_2_1(char *arg, t_map *map)
 	}
 	init_array(array, arg, map);
 
-	int x = -1;
-	int y;
-	while (array[++x])
+	// int x = -1;
+	// int y;
+	// while (array[++x])
+	// {
+	// 	y = 0;
+	// 	printf("array[%d] = {", x );
+	// 	while (array[x][y])
+	// 	{
+	// 		printf(" %d", array[x][y]);
+	// 		y++;
+	// 	}
+	// 	printf(" }\n");
+	// }
+	i = 0;
+	if (array[i])
 	{
-		y = 0;
-		printf("array[%d] = {", x );
-		while (array[x][y])
+		while (array[i])
 		{
-			printf(" %d", array[x][y]);
-			y++;
+			free(array[i]);
+			i++;
 		}
-		printf(" }\n");
+		free(array);
 	}
-	freedom((void **)array);
 }
 
 int	parse_again(int **array, char **line, t_map *map, int i)
